@@ -1,5 +1,5 @@
 import React from 'react';
-import Footer from '../components/Footer';
+
 const Terms = () => {
   return (
     <div>
@@ -99,7 +99,7 @@ const Terms = () => {
         </section>
       </div>
     </div>
-     <Footer />
+
     </div>
   );
 };

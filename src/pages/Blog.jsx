@@ -1,5 +1,5 @@
 import React from 'react';
-import Footer from '../components/Footer';
+
 const blogs = [
   {
     title: 'Master Shipping Route Optimization',
@@ -35,7 +35,7 @@ const Blog = () => {
         ))}
       </div>
     </div>
-     <Footer />
+
     </div>
   );
 };

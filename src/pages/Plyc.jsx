@@ -1,5 +1,5 @@
 import React from 'react';
-import Footer from '../components/Footer';
+
 const Plyc = () => {
   return (
     <div>
@@ -78,7 +78,7 @@ const Plyc = () => {
         </section>
       </div>
     </div>
-      <Footer />
+ 
       </div>
   );
 };
