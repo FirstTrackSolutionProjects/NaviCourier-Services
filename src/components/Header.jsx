@@ -5,7 +5,7 @@ export default function Header() {
   const navigate = useNavigate();
 
   return (
-    <section className="relative bg-gray-100 mt-5">
+    <section className="relative bg-gray-100">
       {/* Background Image */}
       <div className="relative h-[500px] w-full">
         <img
@@ -41,7 +41,7 @@ export default function Header() {
             </button>
 
             <button
-              onClick={() => navigate("/login")}
+              onClick={() => navigate("/signin")}
               className="bg-white text-[#0A2540] px-8 py-3 rounded-lg text-lg font-semibold border-2 border-white hover:bg-gray-100 transition-transform shadow-md hover:scale-105"
             >
               Login
