@@ -28,7 +28,7 @@ function Info() {
       style={{ backgroundColor: "#F1EFEC" }}
     >
       <h2 className="text-blue-900 text-3xl md:text-4xl font-bold mb-14 text-center">
-        First Track Superiority
+        ShipWale Superiority
       </h2>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-5xl">

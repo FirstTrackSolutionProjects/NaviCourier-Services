@@ -19,7 +19,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 w-full shadow-md bg-blue-800 z-50">
+      <nav className="fixed top-0 left-0 w-full shadow-md bg-sky-200 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
           <div className="flex justify-between items-center h-20">
 
@@ -35,8 +35,9 @@ const Navbar = () => {
               </div>
                <img src="/image/logotext.png"
                   alt="Logo Text"
-                  className="h-25 w-auto object-contain mt-5"
+                  className="h-25 w-auto object-contain"
                 />
+               
             </Link>
 
             {/* Desktop Menu */}
