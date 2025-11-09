@@ -5,6 +5,12 @@ const Tracking = () => {
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-white px-4 py-10">
       <div className="bg-white shadow-xl rounded-lg p-8 w-full max-w-md border border-blue-100">
         
+        <img
+          src="/image/track.jpg"
+          alt="Tracking"
+          className="w-full max-w-2xl h-auto mx-auto mb-6 rounded-xl shadow-md"
+        />
+
         {/* Title */}
         <h1 className="text-3xl font-bold text-gray-800 text-center mb-6">
           Track Your <span className="text-blue-600">Parcel</span>
