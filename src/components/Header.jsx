@@ -34,10 +34,10 @@ export default function Header() {
           {/* Buttons */}
           <div className="mt-8 flex flex-wrap gap-4">
             <button
-              onClick={() => navigate("/about")}
+              onClick={() => navigate("/tracking")}
               className="bg-yellow-400 text-[#0A2540] px-8 py-3 rounded-lg text-lg font-semibold hover:bg-yellow-300 transition-transform shadow-md hover:scale-105"
             >
-              Discover More
+              TRACKING
             </button>
 
             <button
