@@ -1,10 +1,39 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import NavItem from "./NavItem";
+import { navItems } from "../Constants";
+import {  useEffect, useState } from "react";
+import { useAuth } from "../context/AuthContext";
+import WalletRechargeModal from "./WalletRechargeModal";
+import { useNavigate, Link } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useWallet } from "../context/WalletContext";
 
 export default function Header() {
   const navigate = useNavigate();
+  const [showRecharge, setShowRecharge] = useState(false)
+  const {verified, isAuthenticated, logout, business_name} = useAuth()
+  const { balance, refreshBalance } = useWallet();
+  const [isMenu,setIsMenu] = useState(false)
+  const closeRechargeModal = () => {
+    setShowRecharge(false);
+  }
+  const toggleMenu = () => {
+    setIsMenu(!isMenu);
+    }
+  useEffect(()=>{
+    if (!verified) return;
+    refreshBalance();
+  },[isAuthenticated])
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
 
   return (
+    <>
+    {showRecharge && <WalletRechargeModal onClose={closeRechargeModal}/>}
     <section className="relative bg-gray-100 mt-5">
       {/* Background Image */}
       <div className="relative h-[500px] w-full">
@@ -41,7 +70,7 @@ export default function Header() {
             </button>
 
             <button
-              onClick={() => navigate("/signin")}
+              onClick={() => navigate("/login")}
               className="bg-white text-[#0A2540] px-8 py-3 rounded-lg text-lg font-semibold border-2 border-white hover:bg-gray-100 transition-transform shadow-md hover:scale-105"
             >
               Login
@@ -51,5 +80,6 @@ export default function Header() {
         </div>
       </div>
     </section>
+    </>
   );
 }

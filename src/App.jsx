@@ -3,7 +3,7 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 
 import Home from './pages/Home'
 import About from './pages/About'
-import Contect from './pages/Contact'
+import Contact from './pages/Contact'
 import Register from './pages/Register'
 import Signin from './pages/Signin'
 import Tracking from './pages/Tracking'
@@ -15,6 +15,9 @@ import Faq from './pages/Faq'
 import Footer from './components/Footer'
 import RefundCancel from './pages/RefundCancel'
 import Navbar from './components/Navbar'
+import { ToastContainer } from 'react-toastify';
+import Verify from './pages/Verify';
+import Dashboard from './pages/Dashboard';
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -33,14 +36,15 @@ const App = () => {
     <>
     <ScrollToTop />
     <Navbar />
+    <ToastContainer />
       
       <div className="min-h-[calc(100vh-64px)] w-full overflow-hidden bg-white">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contect />} />
+        <Route path="/contact" element={<Contact />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/signin" element={<Signin />} />
+        <Route path="/login" element={<Signin />} />
         <Route path="/tracking" element={<Tracking />} />
         <Route path="/price" element={<Pricing />} />
         <Route path="/blog" element={<Blog />} />
@@ -48,6 +52,8 @@ const App = () => {
         <Route path="/policy" element={<PrivacyPolicy />} />
         <Route path="/refund-cancel" element={<RefundCancel />} />
         <Route path="/faq" element={<Faq />} />
+        <Route path="/verify" element={<Verify />} />
+        <Route path="/dashboard/*" element={<Dashboard />} />
       </Routes>
       <Footer />
       </div>

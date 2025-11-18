@@ -1,6 +1,12 @@
-import React, { useState } from "react";
 import { Menu, X } from "lucide-react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import NavItem from "./NavItem";
+import { navItems } from "../Constants";
+import {  useEffect, useState } from "react";
+import { useAuth } from "../context/AuthContext";
+import WalletRechargeModal from "./WalletRechargeModal";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useWallet } from "../context/WalletContext";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -13,10 +19,30 @@ const Navbar = () => {
     { to: "/price", label: "Pricing" },
    
     { to: "/blog", label: "Blog" },
-    { to: "/contact", label: "Contact Us" },
-    { to: "/signin", label: "Sign In" },
+    { to: "/contact", label: "Contact Us" }
   ];
+  const navigate = useNavigate();
+  const [showRecharge, setShowRecharge] = useState(false)
+  const {verified, isAuthenticated, logout, business_name} = useAuth()
+  const { balance, refreshBalance } = useWallet();
+  const [isMenu,setIsMenu] = useState(false)
+  const closeRechargeModal = () => {
+    setShowRecharge(false);
+  }
+  const toggleMenu = () => {
+    setIsMenu(!isMenu);
+    }
+  useEffect(()=>{
+    if (!verified) return;
+    refreshBalance();
+  },[isAuthenticated])
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
   return (
     <>
       <nav className="fixed top-0 left-0 w-full shadow-md bg-gradient-to-r from-black  to-red-400 z-50">
@@ -45,7 +71,7 @@ const Navbar = () => {
             </Link>
 
             {/* Desktop Menu */}
-            <div className="hidden md:flex space-x-6 text-yellow-800 font-medium">
+            <div className="hidden md:flex space-x-6 text-yellow-800 font-medium items-center">
               {links.map((item) => (
                 <Link
                   key={item.to}
@@ -58,6 +84,34 @@ const Navbar = () => {
                 </Link>
               ))}
             </div>
+            {isAuthenticated && (
+          <div className="h-16 flex space-x-3 items-center">
+            {verified? (<>
+              <div onClick={()=>setShowRecharge(true)} className={`relative bg-blue-600 ${balance < 250 ? "text-red-400" : "text-green-400"} flex items-center font-medium rounded-tl-xl rounded-br-xl px-3 min-w-14 py-2 cursor-pointer border-l-4 border-t-4 border-blue-900`}>
+              {balance < 250 && <p className="absolute -mt-5 top-0 right-[2px] text-red-400 text-3xl">!</p>}
+                <p><FontAwesomeIcon icon={'fa-solid fa-house'} />{`₹${balance}`}</p>
+              </div>
+              {/* <div className="bg-white flex items-center font-medium rounded-xl px-3 py-2 ">
+                <p>R</p>
+              </div> */}
+              </>
+            ):null}
+            <div className="hidden md:flex space-x-4">
+              <p className="bg-white text-black flex items-center font-medium rounded-xl px-2 py-2 cursor-pointer" onClick={()=>navigate('/dashboard')}>
+                {business_name}
+              </p>
+              <p
+                className="bg-red-400 text-white flex items-center font-medium rounded-xl px-2 py-2 cursor-pointer"
+                onClick={() => {
+                  logout();
+                  navigate("/");
+                }}
+              >
+                Logout
+              </p>
+            </div>
+          </div>
+        )}
 
             {/* Mobile Button */}
             <div className="md:hidden">
@@ -80,6 +134,7 @@ const Navbar = () => {
           </div>
 
           <div className="flex flex-col px-6 space-y-6 text-lg font-medium">
+            {isAuthenticated &&<p className="text-sky-950 text-xl font-bold bg-[rgba(255,255,255,0.6)] px-5 py-2 rounded-xl" onClick={()=>navigate('/dashboard')}>{business_name}</p>}
             {links.map((item) => (
               <Link
                 key={item.to}
@@ -92,6 +147,7 @@ const Navbar = () => {
                 {item.label}
               </Link>
             ))}
+            {isAuthenticated && <p className="text-red-600 text-xl pt-4 font-bold" onClick={()=>{logout(); setIsMenu(false)}}>Logout</p>}
           </div>
         </div>
       </nav>
