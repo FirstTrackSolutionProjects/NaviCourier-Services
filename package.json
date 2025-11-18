@@ -59,6 +59,21 @@
     "xlsx": "^0.18.5",
     "zod": "^3.23.8"
   },
+  "overrides": {
+    "mui-file-input": {
+      "react": "^19.1.0",
+      "react-dom": "^19.1.0",
+      "@types/react": "^19.1.2",
+      "@types/react-dom": "^19.1.2"
+    }
+    ,
+    "react-tilt": {
+      "react": "^19.1.0",
+      "@types/react": "^19.1.2",
+      "@types/react-dom": "^19.1.2",
+      "react-dom": "^19.1.0"
+    }
+  },
   "devDependencies": {
     "@eslint/js": "^9.25.0",
     "@types/react": "^19.1.2",
