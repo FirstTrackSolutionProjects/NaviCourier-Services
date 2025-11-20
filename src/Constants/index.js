@@ -30,6 +30,25 @@ import UpdateProfileRequestSubmissions from '../components/UpdateProfileRequestS
 import CodRemittanceAdmin from "../components/CodRemittance/CodRemittanceAdmin"
 import CodRemittanceMerchant from "../components/CodRemittance/CodRemittanceMerchant"
 import InternationalWeightDisputes from "../components/InternationalWeightDisputes"
+// Icon components (lucide-react) for menu items
+import {
+    LayoutDashboard,
+    Wallet,
+    PackagePlus,
+    Warehouse as WarehouseIcon,
+    Package,
+    Receipt,
+    Users,
+    Scale,
+    Banknote,
+    RefreshCcw,
+    FileText,
+    ShieldCheck,
+    ClipboardList,
+    Settings as SettingsIcon,
+    LogOut,
+    Globe2
+} from 'lucide-react'
 
 export const navItems = [
     {
@@ -67,7 +86,8 @@ export const navItems = [
 
 export const menuItems = [
     {
-        icon : "/image/logo-nobg.png",
+        
+        icon : LayoutDashboard,
         name : "Dashboard",
         isDropdown : false,
         url : '',
@@ -75,14 +95,15 @@ export const menuItems = [
         dropDownOptions : [{}]
     },
     {
-        icon : "/image/logo-nobg.png",
+        
+        icon : Wallet,
         name : "Wallet Recharge",
         isDropdown : false,
         url : 'wallet-recharge',
         dropDownOptions : [{}]
     },
     // {
-    //     icon : "/image/logo-nobg.png",
+    //     
     //     name : "KYC Update",
     //     isDropdown : false,
     //     merchantOnly : true,
@@ -91,21 +112,24 @@ export const menuItems = [
     //     dropDownOptions : [{}]
     // },
     {
-        icon : "/image/logo-nobg.png",
+        
+        icon : PackagePlus,
         name : "Create Shipment",
         isDropdown : false,
         merchantOnly : true,
         url : 'order/create',
         component: CreateOrder,
         dropDownOptions : [{
-            icon : "/image/logo-nobg.png",
+            
+            icon : PackagePlus,
             name : "Domestic",
             isDropdown : false,
             url : 'order/domestic/create',
             component : CreateOrder,
             dropDownOptions : [{}]
         },{
-            icon : "/image/logo-nobg.png",
+            
+            icon : Globe2,
             name : "International",
             isDropdown : false,
             url : 'order/international/create',
@@ -114,7 +138,8 @@ export const menuItems = [
         },]
     },
     {
-        icon : "/image/logo-nobg.png",
+        
+        icon : WarehouseIcon,
         name : "Warehouse",
         isDropdown : false,
         merchantOnly : true,
@@ -123,31 +148,35 @@ export const menuItems = [
         dropDownOptions : [{}]
     },
     {
-        icon : "/image/logo-nobg.png",
-        name : "Parcels",
+        
+        icon : Package,
+        name : "Shipments",
         isDropdown : false,
         merchantOnly : true,
-        url : 'parcels',
+        url : 'shipments',
         component : UpdateOrder,
         dropDownOptions : [{
-            icon : "/image/logo-nobg.png",
+            
+            icon : Package,
             name : "Domestic",
             isDropdown : false,
-            url : 'parcels/domestic',
+            url : 'shipments/domestic',
             component : UpdateOrder,
             dropDownOptions : [{}]
         },
         {
-            icon : "/image/logo-nobg.png",
+            
+            icon : Globe2,
             name : "International",
             isDropdown : false,
-            url : 'parcels/international',
+            url : 'shipments/international',
             component : UpdateOrderInternational,
             dropDownOptions : [{}]
         },]
     },
     {
-        icon : "/image/logo-nobg.png",
+        
+        icon : Receipt,
         name : "Transaction History",
         isDropdown : false,
         url : 'transaction-history',
@@ -156,7 +185,8 @@ export const menuItems = [
         merchantOnly : true
     },
     {
-        icon : "/image/logo-nobg.png",
+        
+        icon : Users,
         name : "Merchant Transactions",
         isDropdown : false,
         admin : true,
@@ -165,14 +195,16 @@ export const menuItems = [
         dropDownOptions : [{}]
     },
     {
-        icon : "/image/logo-nobg.png",
+        
+        icon : Scale,
         name : "Weight Disputes",
         isDropdown : false,
         url : 'weight-disputes',
         component : WeightDisputes,
         dropDownOptions : [
             {
-                icon : "/image/logo-nobg.png",
+                
+                icon : Scale,
                 name : "Domestic",
                 isDropdown : false,
                 url : 'domestic-weight-disputes',
@@ -180,7 +212,8 @@ export const menuItems = [
                 dropDownOptions : [{}]
             },
             {
-                icon : "/image/logo-nobg.png",
+                
+                icon : Globe2,
                 name : "International",
                 isDropdown : false,
                 url : 'international-weight-disputes',
@@ -190,7 +223,8 @@ export const menuItems = [
         ]
     },
     {
-        icon : "/image/logo-nobg.png",
+        
+        icon : Banknote,
         name : "COD Remittance",
         isDropdown : false,
         admin : true,
@@ -199,7 +233,8 @@ export const menuItems = [
         dropDownOptions : [{}]
     },
     {
-        icon : "/image/logo-nobg.png",
+        
+        icon : Banknote,
         name : "COD Remittance",
         isDropdown : false,
         merchantOnly : true,
@@ -208,7 +243,8 @@ export const menuItems = [
         dropDownOptions : [{}]
     },
     {
-        icon : "/image/logo-nobg.png",
+        
+        icon : RefreshCcw,
         name : "Cancellations/Refunds",
         isDropdown : true,
         admin : true,
@@ -216,14 +252,16 @@ export const menuItems = [
         // component : DashboardMain,
         dropDownOptions : [
             {
-                icon : "/image/logo-nobg.png",
+                
+                icon : RefreshCcw,
                 name : "Pending Cancellations",
                 isDropdown : false,
                 url : 'pending-cancellations',
                 component : PendingCancellations,
                 dropDownOptions : [
                     {
-                        icon : "/image/logo-nobg.png",
+                        
+                        icon : RefreshCcw,
                         name : "Domestic",
                         isDropdown : false,
                         url : 'pending-cancellations/domestic',
@@ -231,7 +269,8 @@ export const menuItems = [
                         dropDownOptions : [{}]
                     },
                     {
-                        icon : "/image/logo-nobg.png",
+                        
+                        icon : Globe2,
                         name : "International",
                         isDropdown : false,
                         url : 'pending-cancellations/international',
@@ -241,14 +280,16 @@ export const menuItems = [
                 ]
             },
             {
-                icon : "/image/logo-nobg.png",
+                
+                icon : RefreshCcw,
                 name : "Pending Refunds",
                 isDropdown : false,
                 url : 'pending-refunds',
                 component : PendingRefunds,
                 dropDownOptions : [
                     {
-                        icon : "/image/logo-nobg.png",
+                        
+                        icon : RefreshCcw,
                         name : "Domestic",
                         isDropdown : false,
                         url : 'pending-refunds/domestic',
@@ -256,7 +297,8 @@ export const menuItems = [
                         dropDownOptions : [{}]
                     },
                     {
-                        icon : "/image/logo-nobg.png",
+                        
+                        icon : Globe2,
                         name : "International",
                         isDropdown : false,
                         url : 'pending-refunds/international',
@@ -268,21 +310,24 @@ export const menuItems = [
         ]
     },
     {
-        icon : "/image/logo-nobg.png",
+        
+        icon : FileText,
         name : "Reports",
         isDropdown : false,
         merchantOnly : true,
         url : 'shipment/reports',
         component : NDR,
         dropDownOptions : [{
-            icon : "/image/logo-nobg.png",
+            
+            icon : FileText,
             name : "Domestic Reports",
             isDropdown : false,
             url : 'shipment/domestic/reports',
             component : NDR,
             dropDownOptions : [{}]
         },{
-            icon : "/image/logo-nobg.png",
+            
+            icon : Globe2,
             name : "International Reports",
             isDropdown : false,
             url : 'shipment/international/reports',
@@ -291,13 +336,15 @@ export const menuItems = [
         },]
     },
     {
-        icon : "/image/logo-nobg.png",
+        
+        icon : ShieldCheck,
         name : "Merchant Manage",
         isDropdown : true,
         admin : true,
         url : 'manage/merchant',
         dropDownOptions : [{
-            icon : "/image/logo-nobg.png",
+            
+            icon : ShieldCheck,
             name : "Verified Merchants",
             isDropdown : false,
             url : 'manage/merchant/verified',
@@ -305,7 +352,8 @@ export const menuItems = [
             dropDownOptions : [{}]
         },
         {
-            icon : "/image/logo-nobg.png",
+            
+            icon : ShieldCheck,
             name : "Non-Verified Merchants",
             isDropdown : false,
             url : 'manage/merchant/non-verified',
@@ -313,20 +361,23 @@ export const menuItems = [
             dropDownOptions : [{}]
         },
         {
-            icon : "/image/logo-nobg.png",
+            
+            icon : Package,
             name : "Shipments",
             isDropdown : false,
             url : 'manage/merchant/shipments',
             component : AllParcels,
             dropDownOptions : [{
-                icon : "/image/logo-nobg.png",
+                
+                icon : Package,
                 name : "Domestic",
                 isDropdown : false,
                 url : 'manage/merchant/shipments/domestic',
                 component : AllParcels,
                 dropDownOptions : [{}]
             },{
-                icon : "/image/logo-nobg.png",
+                
+                icon : Globe2,
                 name : "International",
                 isDropdown : false,
                 url : 'manage/merchant/shipments/international',
@@ -335,20 +386,23 @@ export const menuItems = [
             },]
         },
         {
-            icon : "/image/logo-nobg.png",
+            
+            icon : FileText,
             name : "Shipment Reports",
             isDropdown : false,
             url : 'manage/merchant/shipments/reports',
             component : AllShipmentReports,
             dropDownOptions : [{
-                icon : "/image/logo-nobg.png",
+                
+                icon : FileText,
                 name : "Domestic Reports",
                 isDropdown : false,
                 url : 'manage/merchant/shipments/domestic/reports',
                 component : AllShipmentReports,
                 dropDownOptions : [{}]
             },{
-                icon : "/image/logo-nobg.png",
+                
+                icon : Globe2,
                 name : "International Reports",
                 isDropdown : false,
                 url : 'manage/merchant/shipments/international/reports',
@@ -358,19 +412,19 @@ export const menuItems = [
         }]
     },
     // {
-    //     icon : "/image/logo-nobg.png",
+    //     
     //     name : "Users",
     //     admin : true,
     //     isDropdown : true,
     //     menuID : [10],
     //     dropDownOptions : [{
-    //         icon : "/image/logo-nobg.png",
+    //         
     //         name : "Accounts",
     //         isDropdown : false,
     //         menuID : [10,0],
     //         dropDownOptions : [{}]
     //     },{
-    //         icon : "/image/logo-nobg.png",
+    //         
     //         name : "Admin",
     //         isDropdown : false,
     //         menuID : [10,1],
@@ -378,13 +432,15 @@ export const menuItems = [
     //     },]
     // },
     {
-        icon : "/image/logo-nobg.png",
+        
+        icon : ClipboardList,
         name : "Submission",
         isDropdown : true,
         admin : true,
         url : 'submissions',
         dropDownOptions : [{
-            icon : "/image/logo-nobg.png",
+            
+            icon : ClipboardList,
             name : "Merchant Verification",
             isDropdown : false,
             admin : true,
@@ -393,7 +449,8 @@ export const menuItems = [
             dropDownOptions : [{}]
         },
         {
-            icon : "/image/logo-nobg.png",
+            
+            icon : ClipboardList,
             name : "Update Profile Requests",
             isDropdown : false,
             admin : true,
@@ -402,7 +459,8 @@ export const menuItems = [
             dropDownOptions : [{}]
         },
         {
-            icon : "/image/logo-nobg.png",
+            
+            icon : ClipboardList,
             name : "Contact Submission",
             isDropdown : false,
             admin : true,
@@ -411,7 +469,7 @@ export const menuItems = [
             dropDownOptions : [{}]
         },
         // {
-        //     icon : "/image/logo-nobg.png",
+        //     
         //     name : "KYC Requests",
         //     isDropdown : false,
         //     admin : true,
@@ -422,7 +480,8 @@ export const menuItems = [
     ]
     },
     {
-        icon : "/image/logo-nobg.png",
+        
+        icon : Wallet,
         name : "Manual Recharge",
         isDropdown : false,
         admin : true,
@@ -431,13 +490,15 @@ export const menuItems = [
         dropDownOptions : [{}]
     },
     {
-        icon : "/image/logo-nobg.png",
+        
+        icon : SettingsIcon,
         name : "Settings",
         isDropdown : true,
         url : 'settings',
         dropDownOptions : [
             {
-                icon : "/image/logo-nobg.png",
+                
+                icon : SettingsIcon,
                 name : "Profile",
                 isDropdown : false,
                 url : 'settings/profile',
@@ -445,7 +506,8 @@ export const menuItems = [
                 dropDownOptions : [{}]
             },
             {
-                icon : "/image/logo-nobg.png",
+                
+                icon : SettingsIcon,
                 name : "Profile Update",
                 isDropdown : false,
                 url : 'settings/profile-update-request',
@@ -454,7 +516,8 @@ export const menuItems = [
                 dropDownOptions : [{}]
             },
             {
-                icon : "/image/logo-nobg.png",
+                
+                icon : SettingsIcon,
                 name : "Change Password",
                 isDropdown : false,
                 url : 'settings/change-password',
@@ -464,7 +527,8 @@ export const menuItems = [
         ]
     },
     {
-        icon : "/image/logo-nobg.png",
+        
+        icon : LogOut,
         name : "Logout",
         isDropdown : false,
         url : 'logout',
