@@ -3,7 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 
 export default function Header() {
   const navigate = useNavigate();
-  const {verified, isAuthenticated, logout, business_name} = useAuth()
+  const {isAuthenticated} = useAuth()
 
   return (
     <>
@@ -43,10 +43,10 @@ export default function Header() {
             </button>
 
             <button
-              onClick={() => navigate("/login")}
+              onClick={() => navigate(isAuthenticated ? "/dashboard" : "/login")}
               className="bg-white text-[#0A2540] px-8 py-3 rounded-lg text-lg font-semibold border-2 border-white hover:bg-gray-100 transition-transform shadow-md hover:scale-105"
             >
-              Login
+              {isAuthenticated ? "DASHBOARD" : "LOGIN"}
             </button>
           </div>
 
