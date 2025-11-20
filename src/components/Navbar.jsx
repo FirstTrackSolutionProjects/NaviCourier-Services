@@ -15,8 +15,8 @@ const Navbar = () => {
   const links = [
     { to: "/", label: "Home" },
     { to: "/about", label: "About Us" },
-    { to: "/tracking", label: "Tracking" },
-    { to: "/price", label: "Pricing" },
+    { to: "/tracking", label: "Tracking", dashboard: true },
+    { to: "/price", label: "Pricing", dashboard: true },
    
     { to: "/blog", label: "Blog" },
     { to: "/contact", label: "Contact Us" }
@@ -52,7 +52,7 @@ const Navbar = () => {
     <>
       <nav className="fixed top-0 left-0 w-full shadow-md bg-linear-to-r from-black  to-red-400 z-10">
 
-        <div className="max-w-7xl px-4 sm:px-6 lg:px-10">
+        <div className="w-full px-4 sm:px-6 lg:px-10">
           <div className="flex justify-between items-center h-20">
 
             {/* Logo with Circle */}
@@ -77,7 +77,9 @@ const Navbar = () => {
 
             {/* Desktop Menu */}
             <div className="hidden md:flex space-x-6 text-yellow-800 font-medium items-center">
-              {links.map((item) => (
+              {links.map((item) => {
+                if (pathname.startsWith('/dashboard')) return null;
+                return (
                 <Link
                   key={item.to}
                   to={item.to}
@@ -87,7 +89,7 @@ const Navbar = () => {
                 >
                   {item.label}
                 </Link>
-              ))}
+              )})}
             </div>
             {isAuthenticated && (
           <div className="h-16 flex space-x-3 items-center">
