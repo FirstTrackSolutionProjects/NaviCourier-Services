@@ -1,7 +1,7 @@
 // src/components/Form.js
 
 import React from 'react';
-import PriceCalc from '../Components/PriceCalc';
+import PriceCalc from '../components/PriceCalc';
 const API_URL = import.meta.env.VITE_APP_API_URL
 const Pricing = () => {
   return (
