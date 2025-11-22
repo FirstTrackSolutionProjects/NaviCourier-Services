@@ -14,6 +14,10 @@ const Signin = () => {
   const [emailModalOpen, setEmailModalOpen] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  
+  // ⭐ ADDED
+  const [rememberMe, setRememberMe] = useState(false);
+
   const [showForgotPassword, setShowForgotPassword] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
@@ -37,11 +41,16 @@ const Signin = () => {
     try {
       const formData = {
         email,
-        password
+        password,
+        
+        // ⭐ SEND REMEMBER ME VALUE (optional)
+        rememberMe  
       }
+
       const loginResponse = await loginService(formData)
+
       if (loginResponse.success) {
-        login(loginResponse.token)
+        login(loginResponse.token, rememberMe); // ⭐ PASS IT TO AUTH CONTEXT
         toast.success("Login Successfull")
       } else {
         toast.error(loginResponse.message)
@@ -51,9 +60,6 @@ const Signin = () => {
     }
   };
 
-  const navigateToSignup = () => {
-    navigate('/signup');
-  };
   return (
     <>
     {emailModalOpen && <EmailOTPVerificationModal open={emailModalOpen} onClose={closeEmailModal} />}
@@ -61,7 +67,6 @@ const Signin = () => {
 
       <div className="w-full max-w-md bg-white rounded-xl shadow-xl p-6">
         
-        {/* Image */}
         <div className="w-full flex justify-center mb-4">
           <img
             src="/image/signin.png"
@@ -70,13 +75,12 @@ const Signin = () => {
           />
         </div>
 
-        {/* Heading */}
         <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">
           Welcome Back
         </h2>
 
-        {/* Form */}
         <form className="space-y-4" onSubmit={handleSubmit}>
+          
           <div className="flex items-center border border-gray-300 rounded-md px-3 py-2 focus-within:ring-2 focus-within:ring-red-500">
             <FaEnvelope className="text-gray-500 mr-2" />
             <input
@@ -106,6 +110,26 @@ const Signin = () => {
             </button>
           </div>
 
+          {/* ⭐ REMEMBER ME CHECKBOX */}
+          <div className="flex items-center justify-between -mt-2">
+            <label className="flex items-center text-sm text-gray-600 cursor-pointer">
+              <input
+                type="checkbox"
+                checked={rememberMe}
+                onChange={() => setRememberMe(!rememberMe)}
+                className="mr-2"
+              />
+              Remember Me
+            </label>
+
+            <p
+              className="text-sm text-gray-600 cursor-pointer hover:text-red-700"
+              onClick={() => setShowForgotPassword(true)}
+            >
+              Forgot Password?
+            </p>
+          </div>
+
           <button
             type="submit"
             disabled={!email || !password}
@@ -115,19 +139,12 @@ const Signin = () => {
           </button>
         </form>
 
-        {/* Forgot Password */}
-        <p className="text-right text-sm text-gray-600 mt-2 cursor-pointer hover:text-red-700" onClick={() => setShowForgotPassword(true)}>
-          Forgot Password?
-        </p>
-
-        {/* Divider */}
         <div className="flex items-center my-4">
           <div className="w-full h-px bg-gray-300"></div>
           <span className="px-3 text-gray-500 text-sm">or</span>
           <div className="w-full h-px bg-gray-300"></div>
         </div>
 
-        {/* Create Account */}
         <p className="text-center text-sm">
           Don’t have an account?{" "}
           <Link to="/register" className="text-red-600 font-semibold hover:underline">
